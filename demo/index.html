@@ -1,25 +1,44 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>duang</title>
-<style>
-    div {
-		width: 100px;
-		height: 100px;
-		background-color: #5cb85c;
-	}
-</style>
-<link rel="stylesheet" type="text/css" href="../src/duang.css">
-<script src="../src/duang.js"></script>
+	<meta charset="UTF-8">
+	<title>duang.js</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<style>
+	    div {
+			width: 100px;
+			height: 100px;
+			margin: 0 auto;
+			background-color: #5cb85c;
+			color: #FFF;
+		}
+		
+		footer{
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+			color: #333;
+			padding: 20px 0;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="../src/duang.css">
 </head>
 <body>
-<div></div>
-<script>
-var $this = document.getElementsByTagName('div')[0];
-$this.onclick = function(){
-	duang($this);
-}
-</script>
+	<div>click me to shake.</div>
+	<footer>
+		by zechau
+	</footer>
+	<a href="https://github.com/zechau/duang.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+	
+	<script src="../src/duang.js"></script>
+	<script>
+	var $this = document.getElementsByTagName('div')[0];
+	$this.onclick = function(){
+		duang($this);
+	}
+	</script>
 </body>
 </html>
