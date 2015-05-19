@@ -1,0 +1,28 @@
+.duang{
+	    animation-name: duang;
+		animation-duration: .5s;
+		animation-timing-function: ease-out;
+		animation-iteration-count: infinite;
+		-webkit-animation-name: duang;
+		-webkit-animation-duration: .5s;
+		-webkit-animation-timing-function: ease-out;
+		-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes duang {
+    0%    {left:0px;}
+    20%  {left:-50px;}
+    40%  {left:50px;}
+    60%  {left:-20px;}
+	80%  {left:20px;}
+    100% {left:0px;}
+}
+
+@-webkit-keyframes duang {
+    0%    {left:0px;}
+    20%  {left:-50px;}
+    40%  {left:50px;}
+    60%  {left:-20px;}
+	80%  {left:20px;}
+    100% {left:0px;}
+}

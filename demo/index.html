@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>duang</title>
+<style>
+    div {
+		width: 100px;
+		height: 100px;
+		background-color: #5cb85c;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="../src/duang.css">
+<script src="../src/duang.js"></script>
+</head>
+<body>
+<div></div>
+<script>
+var $this = document.getElementsByTagName('div')[0];
+$this.onclick = function(){
+	duang($this);
+}
+</script>
+</body>
+</html>
