@@ -16,8 +16,12 @@
 	** @pram callback : function,  callback after animation finished
 	*/
 	global.duang = function(element, callback){
+		if(typeof element !== "object" || !element.nodeType ||  element.nodeType !== 1){
+			return;
+		}
+		
 		var onanimationend = function(e){
-			element.className = element.className.replace(/\bduang\b/, "");
+			element.className = element.className.replace(/\s?duang\b/, "");
 			off(element, "animationend webkitAnimationEnd", onanimationend);
 			typeof callback === "function" && callback();
 		};
