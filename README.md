@@ -12,3 +12,6 @@ window.duang(document.getElementById('target'), function(){
 	//do somethings after animation
 })
 ```
+
+## License
+GPL 2.0
