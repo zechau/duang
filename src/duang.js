@@ -16,7 +16,7 @@
 	** @pram callback : function,  callback after animation finished
 	*/
 	global.duang = function(element, callback){
-		if(typeof element !== "object" || !element.nodeType ||  element.nodeType !== 1){
+		if(typeof element !== "object" || !element.tagName){
 			return;
 		}
 		
@@ -26,9 +26,8 @@
 			typeof callback === "function" && callback();
 		};
 		
-		on(element, "animationend webkitAnimationEnd", onanimationend);
-		
 		element.className += " duang";
+		on(element, "animationend webkitAnimationEnd", onanimationend);
 	};
 	
 })(window);
