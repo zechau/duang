@@ -2,27 +2,30 @@
 	    animation-name: duang;
 		animation-duration: .5s;
 		animation-timing-function: ease-out;
-		animation-iteration-count: infinite;
 		-webkit-animation-name: duang;
 		-webkit-animation-duration: .5s;
 		-webkit-animation-timing-function: ease-out;
-		-webkit-animation-iteration-count: infinite;
+		
+		/*hardware-accelerated-css*/
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-moz-transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0);
+		-o-transform: translate3d(0,0,0);
 }
 
 @keyframes duang {
-    0%    {left:0px;}
-    20%  {left:-50px;}
-    40%  {left:50px;}
-    60%  {left:-20px;}
-	80%  {left:20px;}
-    100% {left:0px;}
+    20%  {transform:  translateX(-50px);} /*transform:translateX has better performance than left:7px*/
+    40%  {transform:  translateX(50px);}
+    60%  {transform:  translateX(-20px);}
+	80%  {transform:  translateX(20px);}
+    100% {transform:  translateX(0px);}
 }
 
 @-webkit-keyframes duang {
-    0%    {left:0px;}
-    20%  {left:-50px;}
-    40%  {left:50px;}
-    60%  {left:-20px;}
-	80%  {left:20px;}
-    100% {left:0px;}
+    20%  {transform:  translateX(-50px);}
+    40%  {transform:  translateX(50px);}
+    60%  {transform:  translateX(-20px);}
+	80%  {transform:  translateX(20px);}
+    100% {transform:  translateX(0px);}
 }

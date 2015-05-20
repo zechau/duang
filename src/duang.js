@@ -1,21 +1,30 @@
 ﻿(function(global){
-	var playing = false;
-	var oldPosition = "";
-	var clearAnimatation = function(element){
-		setTimeout(function(){
-			element.className = element.className.replace(/\bduang\b/, "");
-			playing = false;
-			element.style.position = oldPosition;
-		}, 500);
-	}
+	var on = function(element, types, listener){
+			(types.split(" ")).forEach(function(type){
+				element.addEventListener(type, listener, false);
+			});
+	},
 	
-	global.duang = function(element){
-		oldPosition = element.style.position;
-		element.style.position = "relative";
-		if(playing === true){
-				return;
-		}
+	off = function(element, types, listener){
+				(types.split(" ")).forEach(function(type){
+					element.removeEventListener(type, listener, false);
+				});
+	};
+	
+	/**
+	** @pram element: dom element
+	** @pram callback : function,  callback after animation finished
+	*/
+	global.duang = function(element, callback){
+		var onanimationend = function(e){
+			element.className = element.className.replace(/\bduang\b/, "");
+			off(element, "animationend webkitAnimationEnd", onanimationend);
+			typeof callback === "function" && callback();
+		};
+		
+		on(element, "animationend webkitAnimationEnd", onanimationend);
+		
 		element.className += " duang";
-		clearAnimatation(element);
-	}
+	};
+	
 })(window);
