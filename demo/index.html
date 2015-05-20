@@ -4,22 +4,118 @@
 <meta charset="UTF-8">
 <title>duang</title>
 <style>
-    div {
-		width: 100px;
-		height: 100px;
+	html{
+		font-size: 1em;
+		font-family: sans-serif;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%;
+	}
+	p, footer{
+		text-align: center;
+		color: #666;
+	}
+	p b{
+		color: #333;
+	}
+	.singin_panel{
+		width: 282px;
+		margin: 60px auto;
+		padding: 20px;
+		border: 1px solid #d8dee2;
+		border-radius: 5px;
+	}
+	input{
+		padding: 10px 16px;
+		font-size: 18px;
+		margin-top: 10px;
+	}
+	input[type="text"], input[type="password"]{
+		display: block;
+		width: 240px;
+		height: 30px;
+		border: 1px solid #CCC;
+		border-radius: 5px;
+	}
+	input[type="submit"]{
+		line-height: 1.33;
+		border-radius: 6px;
+		border: 0;
+		border-bottom: 3px solid #398439;
+		box-shadow: none !important;
+		color: #fff;
 		background-color: #5cb85c;
+		outline: 0;
+		cursor: pointer;
+	}
+	input[type="submit"]:hover{
+		background-color: #449d44;
+		border-color: #398439;
+	}
+	input.empty_input{
+		border: 1px solid #c9302c;
+	}
+	#suc_msg{
+		display: none;
+		margin-left: 10px;
+		color: #398439;
 	}
 </style>
 <link rel="stylesheet" type="text/css" href="../src/duang.css">
 <script src="../src/duang.js"></script>
 </head>
 <body>
-<div></div>
+	<p>
+		<b>tips:</b>
+		if you left any input empty and submit the sign in form, the form will shake to prompt you to fill the form.
+	</p>
+	<div class="singin_panel">
+		<form action="#">
+			<input type="text" placeholder="User name" id="usr">
+			<input type="password" placeholder="Password" id="pw">
+			<input type="submit" value="Sign in"><span id="suc_msg">Succeeded!</span>
+		</form>
+	</div>
+	<footer>
+		by zechau
+	</footer>
+	<a href="https://github.com/zechau/duang.js">
+		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png">
+	</a>
+	
 <script>
-var $this = document.getElementsByTagName('div')[0];
-$this.onclick = function(){
-	duang($this);
-}
+(function(global){
+	var $form = document.getElementsByTagName("form")[0],
+		  $target = document.getElementsByTagName("div")[0],
+		  isEmpty = function(element){
+				if(element.value === ""){
+					global.duang($target, function(){
+						element.className += " empty_input";
+					});
+					
+					return true;
+				}
+				
+				return false;
+		}
+	
+	$form.onsubmit = function(){
+		var $usr = document.getElementById("usr"),
+			$pw = document.getElementById("pw");
+			
+		$usr.className = $usr.className.replace(/\bempty_input\b/, "");
+		$pw.className = $pw.className.replace(/\bempty_input\b/, "");
+		document.getElementById("suc_msg").style.display = "none";
+		
+		if(isEmpty($usr) || isEmpty($pw)){
+			return false;
+		}
+		
+		document.getElementById("suc_msg").style.display = "inline";
+		
+		return false;
+	}
+})(window);
 </script>
 </body>
 </html>
