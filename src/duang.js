@@ -10,7 +10,11 @@
 					element.removeEventListener(type, listener, false);
 				});
 	};
-		
+	
+	/**
+	** @pram element: dom element
+	** @pram callback : function,  callback after animation finished
+	*/
 	global.duang = function(element, callback){
 		var onanimationend = function(e){
 			element.className = element.className.replace(/\bduang\b/, "");
