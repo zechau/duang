@@ -14,4 +14,4 @@ window.duang(document.getElementById('target'), function(){
 ```
 
 ## License
-GPL 2.0
+MIT
